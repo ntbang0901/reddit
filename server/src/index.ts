@@ -25,7 +25,7 @@ const main = async () => {
     type: "postgres",
     ...(__prod__
       ? {
-          url: process.env.DB_POSTGRESQL_URL,
+          url: "postgres://postgres:nguyenthanhbang0901@db.dgmhxqwxzgozxtgurcix.supabase.co:6543/postgres",
         }
       : {
           database: "reddit",
