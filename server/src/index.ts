@@ -24,7 +24,9 @@ const main = async () => {
   const connection = await createConnection({
     type: "postgres",
     ...(__prod__
-      ? { url: process.env.DATABASE_URL }
+      ? {
+          url: process.env.DB_POSTGRESQL_URL,
+        }
       : {
           database: "reddit",
           username: process.env.DB_USERNAME_DEV,
@@ -58,13 +60,10 @@ const main = async () => {
       credentials: true,
     })
   );
-
   // Session/Cookie store
   const mongoUrl = `mongodb+srv://${process.env.SESSION_DB_USERNAME_DEV_PROD}:${process.env.SESSION_DB_PASSWORD_DEV_PROD}@reddit.3a7vy7k.mongodb.net/?retryWrites=true&w=majority`;
   mongoose.set("strictQuery", false);
-  await mongoose.connect(
-    "mongodb+srv://ntbang:090101@reddit.3a7vy7k.mongodb.net/?retryWrites=true&w=majo"
-  );
+  await mongoose.connect(mongoUrl);
 
   console.log("MongoDB Connected");
 

@@ -6,6 +6,7 @@
   "author": "NTBANG",
   "license": "MIT",
   "scripts": {
+    "build": "rm -rf dist && tsc",
     "start": "ts-node src/index.ts",
     "server": "nodemon dist/index.js",
     "start-ts": "ts-node src/index.ts",
