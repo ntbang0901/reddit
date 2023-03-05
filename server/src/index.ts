@@ -54,9 +54,11 @@ const main = async () => {
 
   app.use(
     cors({
-      origin: __prod__
-        ? process.env.CORS_ORIGIN_PROD
-        : process.env.CORS_ORIGIN_DEV,
+      origin: [
+        "localhost",
+        "vercel.app",
+        process.env.CORS_ORIGIN_PROD as string,
+      ],
       credentials: true,
     })
   );
