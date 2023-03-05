@@ -1,31 +1,29 @@
+import { NetworkStatus } from "@apollo/client";
 import {
-  AspectRatio,
   Box,
   Button,
   Flex,
   Heading,
   Image,
   Link,
-  Spinner,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { PostsDocument, useMeQuery, usePostsQuery } from "../generated/graphql";
-import { addApolloState, initializeApollo } from "../lib/apolloClient";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import NextLink from "next/link";
 import Layout from "../components/Layout";
-import PostEditDeleteButtons from "../components/PostEditDeleteButtons";
-import { NetworkStatus } from "@apollo/client";
 import LoadingSpinner from "../components/LoadingSpinner";
+import PostEditDeleteButtons from "../components/PostEditDeleteButtons";
 import UpvoteSection from "../components/UpvoteSection";
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import { PostsDocument, useMeQuery, usePostsQuery } from "../generated/graphql";
+import { addApolloState, initializeApollo } from "../lib/apolloClient";
 
 export const LIMIT = 5;
 
 const Index = () => {
   const { data: meData } = useMeQuery();
 
-  const { data, loading, error, fetchMore, networkStatus } = usePostsQuery({
+  const { data, loading, fetchMore, networkStatus } = usePostsQuery({
     variables: {
       limit: LIMIT,
     },

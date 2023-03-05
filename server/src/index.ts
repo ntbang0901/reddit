@@ -79,7 +79,8 @@ const main = async () => {
         secure: __prod__, // cookie only works in https
         sameSite: "none",
       },
-      secret: process.env.SESSION_SECRET_DEV_PROD as string,
+      //   secret: process.env.SESSION_SECRET_DEV_PROD as string,
+      secret: "nguyenthanhbang",
       saveUninitialized: false, // don't save empty sessions, right from the start
       resave: false,
     })

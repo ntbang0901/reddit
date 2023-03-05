@@ -1,9 +1,9 @@
-import { Box, Button, Flex, Link, Spinner, useToast } from "@chakra-ui/react";
+import { Box, Button, Flex, Link, useToast } from "@chakra-ui/react";
 import { Form, Formik, FormikHelpers } from "formik";
-import { useRouter } from "next/router";
-import InputField from "../components/InputField";
-import Wrapper from "../components/Wrapper";
 import NextLink from "next/link";
+import InputField from "../components/InputField";
+import LoadingSpinner from "../components/LoadingSpinner";
+import Wrapper from "../components/Wrapper";
 import {
   LoginInput,
   MeDocument,
@@ -11,9 +11,8 @@ import {
   useLoginMutation,
 } from "../generated/graphql";
 import { mapFieldErrors } from "../helpers/mapFieldErroes";
-import { useCheckAuth } from "../utils/useCheckAuth";
-import LoadingSpinner from "../components/LoadingSpinner";
 import { initializeApollo } from "../lib/apolloClient";
+import { useCheckAuth } from "../utils/useCheckAuth";
 
 const initialValues: LoginInput = {
   usernameOrEmail: "",
@@ -21,14 +20,11 @@ const initialValues: LoginInput = {
 };
 
 const Login = () => {
-  const router = useRouter();
-
   const toast = useToast();
 
   const { data: authData, loading: authLoading } = useCheckAuth();
 
-  const [loginUser, { loading: _loginUserLoading, data, error }] =
-    useLoginMutation();
+  const [loginUser, { loading: _loginUserLoading, error }] = useLoginMutation();
 
   const onLoginSubmit = async (
     values: LoginInput,

@@ -1,7 +1,6 @@
-import { Box, Button, Flex, Link, Spinner } from "@chakra-ui/react";
+import { Box, Button, Flex, Link } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import NextLink from "next/link";
-import React from "react";
 import InputField from "../components/InputField";
 import LoadingSpinner from "../components/LoadingSpinner";
 import Wrapper from "../components/Wrapper";

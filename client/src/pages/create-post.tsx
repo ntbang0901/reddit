@@ -1,14 +1,9 @@
-import { Box, Button, Flex, Link, Spinner } from "@chakra-ui/react";
-import { Form, Formik } from "formik";
-import React from "react";
-import InputField from "../components/InputField";
+import { useRouter } from "next/router";
+import CreateOrEditPost from "../components/CreateAndEditPost";
 import Layout from "../components/Layout";
-import NextLink from "next/link";
+import LoadingSpinner from "../components/LoadingSpinner";
 import { CreatePostInput, useCreatePostMutation } from "../generated/graphql";
 import { useCheckAuth } from "../utils/useCheckAuth";
-import { useRouter } from "next/router";
-import LoadingSpinner from "../components/LoadingSpinner";
-import CreateOrEditPost from "../components/CreateAndEditPost";
 
 const initialValues: CreatePostInput = {
   title: "",
