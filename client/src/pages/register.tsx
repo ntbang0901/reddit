@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Link, Spinner, useToast } from "@chakra-ui/react";
+import { Box, Button, Flex, Link, useToast } from "@chakra-ui/react";
 import { Form, Formik, FormikHelpers } from "formik";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
@@ -26,7 +26,7 @@ const Register = () => {
 
   const { data: authData, loading: authLoading } = useCheckAuth();
 
-  const [registerUser, { loading: _registerUserLoading, data, error }] =
+  const [registerUser, { loading: _registerUserLoading }] =
     useRegisterMutation();
 
   const onRegisterSubmit = async (

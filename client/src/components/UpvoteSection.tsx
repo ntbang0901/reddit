@@ -16,7 +16,7 @@ enum VoteTypeValues {
 }
 
 const UpvoteSection = ({ post }: UpvoteSectionProps) => {
-  const [vote, { loading }] = useVoteMutation();
+  const [vote] = useVoteMutation();
 
   // const { data: meData } = useMeQuery();
 
