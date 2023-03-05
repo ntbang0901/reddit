@@ -61,7 +61,7 @@ const main = async () => {
     })
   );
   // Session/Cookie store
-  const mongoUrl = `mongodb+srv://ntbang:090101@reddit.3a7vy7k.mongodb.net/?retryWrites=true&w=majority`;
+  const mongoUrl = `mongodb+srv://${process.env.SESSION_DB_USERNAME_DEV_PROD}:${process.env.SESSION_DB_PASSWORD_DEV_PROD}@reddit.3a7vy7k.mongodb.net/?retryWrites=true&w=majority`;
   mongoose.set("strictQuery", false);
   await mongoose.connect(mongoUrl);
 
@@ -97,6 +97,7 @@ const main = async () => {
       dataLoaders: buildDataLoaders(),
     }),
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
+    cache: "bounded",
   });
 
   await apolloServer.start();
