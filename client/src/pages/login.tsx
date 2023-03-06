@@ -1,6 +1,7 @@
 import { Box, Button, Flex, Link, useToast } from "@chakra-ui/react";
 import { Form, Formik, FormikHelpers } from "formik";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 import InputField from "../components/InputField";
 import LoadingSpinner from "../components/LoadingSpinner";
 import Wrapper from "../components/Wrapper";
@@ -20,6 +21,7 @@ const initialValues: LoginInput = {
 };
 
 const Login = () => {
+  const router = useRouter();
   const toast = useToast();
 
   const { data: authData, loading: authLoading } = useCheckAuth();
@@ -58,6 +60,8 @@ const Login = () => {
         position: "top-right",
       });
     }
+    router.push("/");
+
     const apolloClient = initializeApollo();
     apolloClient.resetStore();
   };

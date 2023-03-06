@@ -155,6 +155,8 @@ export class UserResolver {
 
       req.session.userId = existingUser.id;
 
+      console.log(req);
+
       return {
         code: 200,
         success: true,

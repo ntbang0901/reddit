@@ -55,9 +55,9 @@ const main = async () => {
   app.use(
     cors({
       origin: [
-        "localhost",
-        "vercel.app",
+        "http://localhost:3000",
         process.env.CORS_ORIGIN_PROD as string,
+        "reddit-eta-ten.vercel.app",
       ],
       credentials: true,
     })
@@ -82,7 +82,7 @@ const main = async () => {
         sameSite: "none",
       },
       //   secret: process.env.SESSION_SECRET_DEV_PROD as string,
-      secret: "nguyenthanhbang",
+      secret: process.env.SESSION_SECRET_DEV_PROD as string,
       saveUninitialized: false, // don't save empty sessions, right from the start
       resave: false,
     })
