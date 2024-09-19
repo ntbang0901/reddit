@@ -21,6 +21,7 @@ import { buildDataLoaders } from "./utils/dataLoaders"
 import path from "path"
 
 const main = async () => {
+    console.log("process.env.NODE_ENV = " + process.env.NODE_ENV)
     const connection = await createConnection({
         type: "postgres",
         ...(__prod__
@@ -59,7 +60,7 @@ const main = async () => {
         })
     )
     // Session/Cookie store
-    const mongoUrl = `mongodb+srv://${process.env.SESSION_DB_USERNAME_DEV_PROD}:${process.env.SESSION_DB_PASSWORD_DEV_PROD}@reddit.3a7vy7k.mongodb.net/?retryWrites=true&w=majority`
+    const mongoUrl = `mongodb+srv://${process.env.SESSION_DB_USERNAME_DEV_PROD}:${process.env.SESSION_DB_PASSWORD_DEV_PROD}@cluster0.rmgkl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
     mongoose.set("strictQuery", false)
     await mongoose.connect(mongoUrl)
 
